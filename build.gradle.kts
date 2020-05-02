@@ -2,7 +2,10 @@ import io.kotless.plugin.gradle.dsl.kotless
 
 plugins {
     kotlin("jvm") version "1.3.72"
+    kotlin("plugin.serialization") version "1.3.70"
+    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     id("io.kotless") version "0.1.3" apply true
+    application
 }
 
 group = "io.kotless.examples"
@@ -14,7 +17,9 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("io.kotless", "lang", "0.1.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
+    implementation("io.kotless", "ktor-lang", "0.1.3")
+    implementation("io.github.config4k", "config4k", "0.4.1")
 }
 
 tasks {
@@ -28,23 +33,17 @@ tasks {
 
 kotless {
     config {
-        //build後のモジュールとTerraformのstateファイルを配置するためのBucket
         bucket = project.property("KOTLESS_BUCKET_NAME").toString()
-        //作成したリソースにつくprefix
         prefix = "dev"
 
         // terraformの設定
         terraform {
-            // AWS CLIのcredentiaで設定したProfile
             profile = "kotless"
-            // リソースの構築先リージョン（S3のリージョンと合わせる）
             region = "ap-northeast-1"
         }
     }
 
-    //webApplicationの設定
     webapp {
-        //作成するlambdaのメモリとTimeout設定
         lambda {
             memoryMb = 1024
             timeoutSec = 120
@@ -53,8 +52,8 @@ kotless {
 
     extensions {
         terraform {
-            //Enable back Destroy task
             allowDestroy = true
         }
     }
 }
+// project.gradle.startParameter.excludedTaskNames.add("deploy")
