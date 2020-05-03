@@ -1,24 +1,24 @@
 package io.kotless.examples
 
+import com.typesafe.config.ConfigFactory
+import io.github.config4k.extract
 import io.kotless.dsl.ktor.Kotless
+import io.kotless.dsl.ktor.lang.LambdaWarming
+import io.kotless.dsl.ktor.lang.event.events
 import io.kotless.examples.controllers.TaskController
+import io.kotless.examples.models.PostTaskParams
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.response.respondText
-import io.ktor.routing.*
-import com.typesafe.config.ConfigFactory
-import io.github.config4k.extract
-import io.kotless.dsl.ktor.lang.LambdaWarming
-import io.kotless.dsl.ktor.lang.event.events
-import io.kotless.examples.models.PostTaskParams
-import io.ktor.request.receive
+import io.ktor.routing.* // ktlint-disable no-wildcard-imports
 
 class Server : Kotless() {
     override fun prepare(app: Application) {
         val config = ConfigFactory.load()
-        val settings =  config.extract<Map<String, String>>("settings")
+        val settings = config.extract<Map<String, String>>("settings")
 
         val taskController = TaskController()
 

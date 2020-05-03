@@ -1,10 +1,9 @@
 package io.kotless.examples.controllers
 
-import java.util.*
+import io.kotless.examples.models.Task
 import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import io.kotless.examples.models.Task
 
 class TaskController {
     val json = Json(JsonConfiguration.Stable)
