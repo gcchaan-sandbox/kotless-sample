@@ -1,12 +1,12 @@
-package io.kotless.examples
+package com.gcchaan.api
 
+import com.gcchaan.api.controllers.TaskController
+import com.gcchaan.api.models.PostTaskParams
 import com.typesafe.config.ConfigFactory
 import io.github.config4k.extract
 import io.kotless.dsl.ktor.Kotless
 import io.kotless.dsl.ktor.lang.LambdaWarming
 import io.kotless.dsl.ktor.lang.event.events
-import io.kotless.examples.controllers.TaskController
-import io.kotless.examples.models.PostTaskParams
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode

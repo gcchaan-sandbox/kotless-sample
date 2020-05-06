@@ -1,6 +1,6 @@
-package io.kotless.examples.controllers
+package com.gcchaan.api.controllers
 
-import io.kotless.examples.models.Task
+import com.gcchaan.api.models.Task
 import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration

@@ -1,4 +1,4 @@
-package io.kotless.examples.controllers
+package com.gcchaan.api.controllers
 
 import com.google.common.base.Splitter
 import com.google.common.collect.Lists

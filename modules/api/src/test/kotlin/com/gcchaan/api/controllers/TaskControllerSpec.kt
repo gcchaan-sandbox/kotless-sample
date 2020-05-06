@@ -1,4 +1,4 @@
-package io.kotless.examples.controllers
+package com.gcchaan.api.controllers
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB
 import com.amazonaws.services.dynamodbv2.local.embedded.DynamoDBEmbedded

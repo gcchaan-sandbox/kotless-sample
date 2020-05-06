@@ -1,4 +1,4 @@
-package io.kotless.examples.models
+package com.gcchaan.api.models
 
 import kotlinx.serialization.Serializable
 
